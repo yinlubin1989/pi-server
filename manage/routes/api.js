@@ -3,6 +3,7 @@ var router = express.Router();
 const exec = require('child_process').exec
 
 router.all('/pull', function(req, res, next) {  
+  console.log('git -C '+ process.cwd() +' pull')
   exec('git -C '+ process.cwd() +' pull', (err, stdout) => {
     res.send(stdout);
   });
