@@ -1,2 +1,2 @@
 #!/bin/sh
-http-server -p 8081
+pm2 start /home/pi/www/pi-server/manage/bin/www
