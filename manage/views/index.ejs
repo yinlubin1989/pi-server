@@ -6,12 +6,23 @@
   </head>
   <body>
     
+    <canvas id="video-canvas"></canvas>
+
     <button id="pull">PULL</button>
     <button id="restart">PM2_RESTART</button>
     <div id="screen"></div>
+
     
     
+    <script type="text/javascript" src="/javascripts/jsmpeg.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+
+
+  <script type="text/javascript">
+		var canvas = document.getElementById('video-canvas');
+		var url = 'ws://192.168.1.11:8082';
+		var player = new JSMpeg.Player(url, {canvas: canvas});
+	</script>
 
     <script>
         $('#pull').click(() => {
