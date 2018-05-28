@@ -1,6 +1,6 @@
 #!/bin/sh
 
-modprobe bcm2835-v4l2
+sudo modprobe bcm2835-v4l2
 
 pm2 start /home/pi/www/pi-server/manage/bin/www
 
