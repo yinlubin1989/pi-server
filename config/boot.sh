@@ -1,8 +1,10 @@
 #!/bin/sh
+
+modprobe bcm2835-v4l2
+
 pm2 start /home/pi/www/pi-server/manage/bin/www
 
 pm2 start /home/pi/Util/webcam/websocket-relay.js -- 0
-
 
 while sleep 10
 do
