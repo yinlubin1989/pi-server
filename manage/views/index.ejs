@@ -22,7 +22,7 @@
 
   <script type="text/javascript">
 		var canvas = document.getElementById('video-canvas');
-		var url = 'ws://20u88480e3.iok.la:18812';
+		var url = 'ws://192.168.1.11:18812';
 		var player = new JSMpeg.Player(url, {canvas: canvas});
 	</script>
 
@@ -34,7 +34,7 @@
           })
         });
 
-        $('#ledon').click(() => {
+        $('#ledoff').click(() => {
           $.ajax({
             url: '/api/led/off'
           })
