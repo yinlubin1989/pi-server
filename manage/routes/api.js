@@ -14,4 +14,22 @@ router.all('/restart', function(req, res, next) {
   exec('pm2 restart all', (err, stdout) => {});
 });
 
+const Gpio = require('onoff').Gpio;
+const led = new Gpio(17, 'out');
+
+router.all('/led/on', function(req, res, next) {
+  led.writeSync(1);
+});
+
+router.all('/led/off', function(req, res, next) {
+  led.writeSync(0);
+});
+
+
+led.writeSync(1);
+
+setTimeout(() => {
+    
+})
+
 module.exports = router;

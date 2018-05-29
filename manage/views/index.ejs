@@ -10,6 +10,8 @@
 
     <button id="pull">PULL</button>
     <button id="restart">PM2_RESTART</button>
+    <button id="ledon">led-on</button>
+    <button id="ledoff">led-off</button>
     <div id="screen"></div>
 
     
@@ -25,6 +27,20 @@
 	</script>
 
     <script>
+
+        $('#ledon').click(() => {
+          $.ajax({
+            url: '/api/led/on'
+          })
+        });
+
+        $('#ledon').click(() => {
+          $.ajax({
+            url: '/api/led/off'
+          })
+        });
+
+
         $('#pull').click(() => {
           $.ajax({
             url: '/api/pull'
