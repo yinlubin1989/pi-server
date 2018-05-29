@@ -19,10 +19,12 @@ const led = new Gpio(17, 'out');
 
 router.all('/led/on', function(req, res, next) {
   led.writeSync(1);
+  res.send('open');
 });
 
 router.all('/led/off', function(req, res, next) {
   led.writeSync(0);
+  res.send('close');
 });
 
 
