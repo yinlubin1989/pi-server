@@ -10,17 +10,17 @@ var board = new five.Board({
   repl: false
 })
 
-board.on('ready',function() {
-  const p1 = new five.Pin(21)
-  const p2 = new five.Pin(22)
-  const p3 = new five.Pin(23)
-  const p4 = new five.Pin(24)
+// board.on('ready',function() {
+//   const p1 = new five.Pin(21)
+//   const p2 = new five.Pin(22)
+//   const p3 = new five.Pin(23)
+//   const p4 = new five.Pin(24)
 
-  p1.high()
-  p2.low()  
-  p3.high()
-  p4.low()
-})
+//   p1.high()
+//   p2.low()  
+//   p3.high()
+//   p4.low()
+// })
 
 router.all('/direction', function(req, res, next) {  
  
