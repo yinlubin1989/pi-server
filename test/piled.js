@@ -14,12 +14,12 @@ board.on('ready',function() {
 
   p1.high()
   p2.low()  
-  p3.high()
-  p4.low()
+  p3.low()
+  p4.high()
   setTimeout(() => {
     p1.low()
     p2.low()  
     p3.low()
     p4.low()
-  }, 7000)
+  }, 20000)
 })
