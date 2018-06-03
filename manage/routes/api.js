@@ -10,7 +10,10 @@ var board = new five.Board({
   repl: false
 })
 
-const pins = [new five.Pin(21),new five.Pin(22),new five.Pin(23),new five.Pin(24)]
+let pins = {}
+board.on('ready',function() {
+  pins = [new five.Pin(21),new five.Pin(22),new five.Pin(23),new five.Pin(24)]
+})
 
 router.all('/direction/:cmd', function(req, res, next) {  
   const cmd = req.params.cmd;

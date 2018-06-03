@@ -21,5 +21,5 @@ board.on('ready',function() {
     p2.low()  
     p3.low()
     p4.low()
-  }, 20000)
+  }, 1000)
 })
