@@ -2,29 +2,25 @@ var express = require('express');
 var router = express.Router();
 const exec = require('child_process').exec
 
-var five = require('johnny-five')
-var Raspi = require('raspi-io')
+// var five = require('johnny-five')
+// var Raspi = require('raspi-io')
 
-var board = new five.Board({
-  io: new Raspi,
-  repl: false
-})
-
-// board.on('ready',function() {
-//   const p1 = new five.Pin(21)
-//   const p2 = new five.Pin(22)
-//   const p3 = new five.Pin(23)
-//   const p4 = new five.Pin(24)
-
-//   p1.high()
-//   p2.low()  
-//   p3.high()
-//   p4.low()
+// var board = new five.Board({
+//   io: new Raspi,
+//   repl: false
 // })
 
-router.all('/direction', function(req, res, next) {  
- 
+// const pins = [new five.Pin(21),new five.Pin(22),new five.Pin(23),new five.Pin(24)]
+
+router.all('/direction/:cmd', function(req, res, next) {  
+  const cmd = req.params.cmd;
+
+  cmd.split(',').forEach((item, index)=>{
+    pins[index][item ? 'high' : 'low']()
+  })
+    
 });
+
 
 router.all('/pull', function(req, res, next) {  
   console.log('git -C '+ __dirname +' pull')
