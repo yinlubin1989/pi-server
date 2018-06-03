@@ -38,17 +38,17 @@ router.all('/restart', function(req, res, next) {
   exec('pm2 restart all', (err, stdout) => {});
 });
 
-const Gpio = require('onoff').Gpio;
-const led = new Gpio(17, 'out');
+// const Gpio = require('onoff').Gpio;
+// const led = new Gpio(17, 'out');
 
 router.all('/led/on', function(req, res, next) {
-  led.writeSync(1);
-  res.send('open');
+  // led.writeSync(1);
+  // res.send('open');
 });
 
 router.all('/led/off', function(req, res, next) {
-  led.writeSync(0);
-  res.send('close');
+  // led.writeSync(0);
+  // res.send('close');
 });
 
 
