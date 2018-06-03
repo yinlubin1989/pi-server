@@ -2,15 +2,15 @@ var express = require('express');
 var router = express.Router();
 const exec = require('child_process').exec
 
-// var five = require('johnny-five')
-// var Raspi = require('raspi-io')
+var five = require('johnny-five')
+var Raspi = require('raspi-io')
 
-// var board = new five.Board({
-//   io: new Raspi,
-//   repl: false
-// })
+var board = new five.Board({
+  io: new Raspi,
+  repl: false
+})
 
-// const pins = [new five.Pin(21),new five.Pin(22),new five.Pin(23),new five.Pin(24)]
+const pins = [new five.Pin(21),new five.Pin(22),new five.Pin(23),new five.Pin(24)]
 
 router.all('/direction/:cmd', function(req, res, next) {  
   const cmd = req.params.cmd;
