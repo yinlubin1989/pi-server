@@ -51,8 +51,8 @@ router.all('/led/off', function(req, res, next) {
   // res.send('close');
 });
 
-
-led.writeSync(1);
+// 
+// led.writeSync(1);
 
 setTimeout(() => {
     
