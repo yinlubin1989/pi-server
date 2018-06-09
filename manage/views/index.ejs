@@ -12,7 +12,14 @@
     <button id="restart">PM2_RESTART</button>
     <div id="screen"></div>
 
-
+  <style>
+  html,body{
+    background: #000;
+  }
+  #video-canvas{
+    transform: rotate(180deg);
+  }
+  </style>
     
     
     <script type="text/javascript" src="/javascripts/jsmpeg.min.js"></script>
@@ -48,10 +55,17 @@
           if(key === 40) {
             ws.send('0,1,0,1');
           }
-
+          
           if(key  === 32){
-            ws.send('0,0,0,0');
+            ws.send('0,1,1,0');
           }
+        })
+        
+        $(window).on('keyup', function(e){
+          if(key  === 32){
+            return false;
+          }
+          ws.send('0,0,0,0');
         })
       });
 
