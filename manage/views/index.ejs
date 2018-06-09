@@ -57,14 +57,14 @@
           }
           
           if(key  === 32){
-            ws.send('0,1,1,0');
+            ws.send('1,0,1,0');
           }
         })
         
         $(window).on('keyup', function(e){
-          if(key  === 32){
-            return false;
-          }
+          // if(key  === 32){
+          //   return false;
+          // }
           ws.send('0,0,0,0');
         })
       });
