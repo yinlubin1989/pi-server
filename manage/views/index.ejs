@@ -62,7 +62,7 @@
         })
         
         $(window).on('keyup', function(e){
-          if(key  === 32){
+          if(key  !== 32){
             return false;
           }
           ws.send('0,0,0,0');
