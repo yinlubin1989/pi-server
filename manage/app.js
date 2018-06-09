@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var ws = require('ws');
 
 var indexRouter = require('./routes/index');
 var apiRouter = require('./routes/api');
@@ -21,6 +22,34 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api', apiRouter);
 app.use('/', indexRouter);
+
+var five = require('johnny-five')
+var Raspi = require('raspi-io')
+
+var board = new five.Board({
+  io: new Raspi,
+  repl: false
+})
+
+let pins = {}
+
+board.on('ready',function() {
+  pins = [new five.Pin(21),new five.Pin(22),new five.Pin(23),new five.Pin(24)]
+})
+
+new ws.Server({
+  port: 12345
+}).on('connection', function(socket, req) {
+
+  socket.on('message', data => {
+    data.split(',').forEach((item, index) => {
+      console.log(item, index)
+      pins[index][item == 0 ? 'high' : 'low']();
+    })
+  })
+  socket.on('close', err => {})
+  socket.on('error', err => {})
+})
 
 
 // catch 404 and forward to error handler

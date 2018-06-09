@@ -10,9 +10,8 @@
 
     <button id="pull">PULL</button>
     <button id="restart">PM2_RESTART</button>
-    <button id="ledon">led-on</button>
-    <button id="ledoff">led-off</button>
     <div id="screen"></div>
+
 
     
     
@@ -28,17 +27,33 @@
 
     <script>
 
-        $('#ledon').click(() => {
-          $.ajax({
-            url: '/api/led/on'
-          })
-        });
+      var ws = new WebSocket('ws://127.0.0.1:12345');
 
-        $('#ledoff').click(() => {
-          $.ajax({
-            url: '/api/led/off'
-          })
-        });
+      ws.addEventListener('open', function (event) {
+        $(window).on('keydown', function(e){
+          var key = e.keyCode;
+          console.log(key)
+          if(key === 37) {
+            ws.send('0,1,1,0');
+          }
+
+          if(key === 38) {
+            ws.send('1,0,1,0');
+          }
+
+          if(key === 39) {
+            ws.send('1,0,0,1');
+          }
+
+          if(key === 40) {
+            ws.send('0,1,0,1');
+          }
+
+          if(key  === 32){
+            ws.send('0,0,0,0');
+          }
+        })
+      });
 
 
         $('#pull').click(() => {
@@ -56,6 +71,7 @@
             $('#screen').append(res).append('<br>------------------------------------<br>')
           })
         });
+
     </script>
   </body>
 </html>
